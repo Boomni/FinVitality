@@ -1,0 +1,36 @@
+# These are files i wish to ignore
+
+# Python files
+*.pyc
+__pycache__/
+
+# Flask related files
+instance/
+.env
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Node.js files
+node_modules/
+
+# Build files
+build/
+
+# Logs
+*.log
+
+# For the Backend
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.sql
+backend/*.swp
+backend/instance/
+backend/.env
+
+# For the Frontend
+frontend/node_modules/
+frontend/build/
