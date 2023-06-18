@@ -3,15 +3,15 @@
 
 import sqlalchemy
 from sqlalchemy import create_engine
-from backend.app import models
+from backend.app.api.v1 import models
 from sqlalchemy.orm import sessionmaker, scoped_session
-from backend.app.models.base_model import BaseModel, Base
-from backend.app.models.loan_applications import LoanApplication
-from backend.app.models.contributions import Contribution
-from backend.app.models.loans import Loan
-from backend.app.models.contribution_subscriptions import ContributionSubscription
-from backend.app.models.transactions import Transaction
-from backend.app.models.users import User
+from backend.app.api.v1.models.base_model import BaseModel, Base
+from backend.app.api.v1.models.loan_applications import LoanApplication
+from backend.app.api.v1.models.contributions import Contribution
+from backend.app.api.v1.models.loans import Loan
+from backend.app.api.v1.models.contribution_subscriptions import ContributionSubscription
+from backend.app.api.v1.models.transactions import Transaction
+from backend.app.api.v1.models.users import User
 from os import getenv
 from dotenv import load_dotenv
 

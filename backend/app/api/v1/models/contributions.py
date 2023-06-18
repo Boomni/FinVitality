@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Contributions Module"""
-from backend.app.models.base_model import BaseModel, Base
+from backend.app.api.v1.models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Date
 from sqlalchemy.sql import sqltypes
 

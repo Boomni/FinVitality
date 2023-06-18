@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """This module defines a class ContributionSubscription"""
-from backend.app.models.base_model import BaseModel, Base
-from backend.app.models.users import User
-from backend.app.models.contributions import Contribution
+from backend.app.api.v1.models.base_model import BaseModel, Base
+from backend.app.api.v1.models.users import User
+from backend.app.api.v1.models.contributions import Contribution
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
