@@ -11,6 +11,10 @@ class ContributionSubscription(Base):
     __tablename__ = 'contribution_subscriptions'
     id = Column(String(60), primary_key=True)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
-    contribution_id = Column(String(60), ForeignKey('contributions.id'), nullable=False)
+    contribution_id = Column(
+            String(60),
+            ForeignKey('contributions.id'),
+            nullable=False
+    )
     user = relationship("User")
     contribution = relationship("Contribution")

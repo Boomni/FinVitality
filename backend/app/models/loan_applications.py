@@ -17,4 +17,3 @@ class LoanApplication(BaseModel, Base):
     status = Column(String(10), nullable=False)
     user = relationship("User")
     loan = relationship("Loan")
-

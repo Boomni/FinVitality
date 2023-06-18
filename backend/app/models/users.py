@@ -12,7 +12,7 @@ class User(BaseModel, Base):
     id = Column(String(60), primary_key=True)
     firstname = Column(String(128), nullable=False)
     lastname = Column(String(128), nullable=False)
-    middle_name= Column(String(128))
+    middle_name = Column(String(128))
     birth_date = Column(Date)
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)

@@ -11,4 +11,3 @@ class Loan(BaseModel, Base):
     amount = Column(sqltypes.Numeric(12, 2), nullable=False)
     interest_rate = Column(sqltypes.Numeric(5, 2))
     loan_term = Column(Integer, nullable=False)
-

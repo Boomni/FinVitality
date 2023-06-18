@@ -14,4 +14,3 @@ class Transaction(BaseModel, Base):
     transaction_type = Column(String(60), nullable=False)
     amount = Column(sqltypes.Numeric(12, 2), nullable=False)
     user = relationship("User")
-
