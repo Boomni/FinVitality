@@ -100,6 +100,20 @@ class DBStorage:
     def close(self):
         """Remove the current session to create a new one"""
         self.__session.close()
+    def get(self, cls, id):
+        """
+        Returns the object based on the class name and its ID, or
+        None if not found
+        """
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+
+        return None
 
     def count(self, cls=None):
         """
@@ -119,3 +133,19 @@ class DBStorage:
     def get_session(self):
         return self.__session
 
+    def filter(self, cls, **kwargs):
+        """
+        Filter objects of a specific class based on the specified criteria (kwargs).
+        Returns a list of filtered objects.
+        """
+        if cls not in classes.values():
+            return []
+
+        filtered_objects = []
+
+        all_cls = models.storage.all(cls)
+        for value in all_cls.values():
+            if all(getattr(value, attr) == val for attr, val in kwargs.items()):
+                filtered_objects.append(value)
+
+        return filtered_objects
