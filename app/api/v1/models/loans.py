@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Loans Module"""
-from backend.app.api.v1.models.base_model import BaseModel, Base
+from app.api.v1.models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.sql import sqltypes
 

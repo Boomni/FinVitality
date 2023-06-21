@@ -12,6 +12,7 @@ instance/
 venv/
 env/
 *.env
+api/app/api/v1/config.py
 
 # Node.js files
 node_modules/
@@ -22,15 +23,11 @@ build/
 # Logs
 *.log
 
-# For the Backend
-backend/__pycache__/
-backend/*.pyc
-backend/*.pyo
-backend/*.sql
-backend/*.swp
-backend/instance/
-backend/.env
-
-# For the Frontend
-frontend/node_modules/
-frontend/build/
+# For the app
+app/__pycache__/
+app/*.pyc
+app/*.pyo
+app/*.sql
+app/*.swp
+app/instance/
+app/.env

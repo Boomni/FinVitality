@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module defines a class User"""
-from backend.app.api.v1.models.base_model import BaseModel, Base
+from app.api.v1.models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Date, Text
 from sqlalchemy.orm import relationship
 
@@ -16,5 +16,5 @@ class User(BaseModel, Base):
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
     address = Column(Text)
-    phone_number = Column(String(15), nullable=False)
+    phonenumber = Column(String(15), nullable=False)
     employment_status = Column(String(60))

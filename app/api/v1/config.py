@@ -1,0 +1,1 @@
+SECRET_KEY= "Portfolio_101877"
