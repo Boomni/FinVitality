@@ -59,3 +59,4 @@ class BaseModel:
         """Deletes an instance from the storage"""
         from app.api.v1.models import storage
         storage.delete(self)
+        

@@ -12,7 +12,7 @@ instance/
 venv/
 env/
 *.env
-api/app/api/v1/config.py
+app/api/v1/config.py
 
 # Node.js files
 node_modules/

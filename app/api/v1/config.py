@@ -1,1 +1,1 @@
-SECRET_KEY= "Portfolio_101877"
+SECRET_KEY= "ALSWE Portfolio_101877"
