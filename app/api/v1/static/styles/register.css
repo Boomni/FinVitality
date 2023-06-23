@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: #ebe9e9;
   overflow: auto;
   padding: 3rem 0;
 }
@@ -42,7 +42,7 @@ form {
 }
 
 .form-group {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.5rem;
 }
 
 label {

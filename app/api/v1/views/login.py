@@ -29,4 +29,4 @@ def login():
 
     session['email'] = email
     
-    return jsonify({"message": "login successful"})
+    return render_template("dashboard.html")
