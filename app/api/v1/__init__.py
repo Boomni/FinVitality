@@ -8,3 +8,5 @@ from app.api.v1.views.index import *
 from app.api.v1.views.register import *
 from app.api.v1.views.login import *
 from app.api.v1.views.logout import *
+from app.api.v1.views.dashboard import *
+from app.api.v1.views.profile import *

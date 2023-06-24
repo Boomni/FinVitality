@@ -28,5 +28,7 @@ def login():
         return jsonify({'message': 'Invalid email or password'}), 401
 
     session['email'] = email
+    session['logged_in'] = True
+
     
-    return render_template("dashboard.html")
+    return redirect("/dashboard")
