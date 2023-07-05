@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module for user authentication and login """
 
-from flask import jsonify, render_template, request, session, redirect, flash, current_app
+from flask import jsonify, render_template, request, session, redirect, flash
 from app.api.v1.models.users import User
 from app.api.v1.models import storage
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -17,7 +17,6 @@ def display_login_form():
 
 @app_views.route('/login', methods=['POST'], strict_slashes=False)
 def login():
-    
     email = request.form['email']
     password = request.form['password']
 

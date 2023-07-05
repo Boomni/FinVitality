@@ -24,4 +24,3 @@ class Contribution(BaseModel, Base):
         if self.benefits:
             return json.loads(self.benefits)
         return []
-

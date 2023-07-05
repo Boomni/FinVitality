@@ -100,6 +100,7 @@ class DBStorage:
     def close(self):
         """Remove the current session to create a new one"""
         self.__session.close()
+
     def get(self, cls, id):
         """
         Returns the object based on the class name and its ID, or
@@ -135,7 +136,8 @@ class DBStorage:
 
     def filter(self, cls, **kwargs):
         """
-        Filter objects of a specific class based on the specified criteria (kwargs).
+        Filter objects of a specific class
+        Based on the specified criteria (kwargs).
         Returns a list of filtered objects.
         """
         if cls not in classes.values():
@@ -145,7 +147,8 @@ class DBStorage:
 
         all_cls = models.storage.all(cls)
         for value in all_cls.values():
-            if all(getattr(value, attr) == val for attr, val in kwargs.items()):
+            if all(getattr(value, attr)
+                   == val for attr, val in kwargs.items()):
                 filtered_objects.append(value)
 
         return filtered_objects

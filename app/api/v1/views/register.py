@@ -4,13 +4,16 @@
 from werkzeug.security import generate_password_hash
 from app.api.v1.models.users import User
 from app.api.v1.models import storage
-from flask import jsonify, render_template, request, flash, redirect, url_for, session
+from flask import jsonify, render_template, request
+from flask import flash, redirect, url_for, session
 from app.api.v1 import app_views
 import re
+
 
 @app_views.route('/register', methods=['GET'], strict_slashes=False)
 def display_registration_form():
     return render_template("register.html")
+
 
 @app_views.route('/register', methods=['POST'], strict_slashes=False)
 def authenticate_and_register():
@@ -37,7 +40,8 @@ def authenticate_and_register():
         }
         return redirect(url_for('app_views.display_registration_form'))
 
-    if session_data.query(User).filter(User.phonenumber == phonenumber).first():
+    if session_data.query(User).filter(User.phonenumber
+                                       == phonenumber).first():
         flash('Phone number already exists', 'error')
         session['form_data'] = {
             'firstname': firstname,
@@ -46,7 +50,7 @@ def authenticate_and_register():
             'phonenumber': phonenumber
         }
         return redirect(url_for('app_views.display_registration_form'))
- 
+
     if confirm_pwd != password:
         flash('Passwords don\'t match', 'error')
         session['form_data'] = {

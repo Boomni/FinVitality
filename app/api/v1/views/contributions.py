@@ -1,24 +1,30 @@
 #!/usr/bin/python3
 """ View for the contributions package page"""
 from app.api.v1 import app_views
-from flask import Flask, render_template, request, flash, session, redirect, url_for
+from flask import Flask, render_template, request
+from flask import flash, session, redirect, url_for
 from app.api.v1.models.contributions import Contribution
 from app.api.v1.models import storage
 
 
-@app_views.route('/contributions', methods=['GET'], strict_slashes=False)
+@app_views.route('/contributions',
+                 methods=['GET'], strict_slashes=False)
 def contribution_packages():
     """Displays an HTML page with a list of contributions"""
     contributions = storage.all(Contribution).values()
     contributions = sorted(contributions, key=lambda k: k.title)
     return render_template('contributions.html', contributions=contributions)
 
-@app_views.route('/create_contribution', methods=['GET'], strict_slashes=False)
+
+@app_views.route('/create_contribution',
+                 methods=['GET'], strict_slashes=False)
 def display_package_form():
     """Displays a form to create a contribution package"""
     return render_template("create_contribution.html")
 
-@app_views.route('/create_contribution', methods=['POST'], strict_slashes=False)
+
+@app_views.route('/create_contribution',
+                 methods=['POST'], strict_slashes=False)
 def create_package():
     """Creates a contribution package"""
     title = request.form.get("title")
@@ -44,7 +50,9 @@ def create_package():
 
     return redirect("/contributions")
 
-@app_views.route('/update_contribution/<contribution_id>', methods=['POST'], strict_slashes=False)
+
+@app_views.route('/update_contribution/<contribution_id>',
+                 methods=['POST'], strict_slashes=False)
 def update_contribution(contribution_id):
     """Updates a contribution package"""
     contribution = storage.get(Contribution, contribution_id)
@@ -62,7 +70,9 @@ def update_contribution(contribution_id):
         flash('Contribution package not found', 'error')
         return redirect(url_for('contribution_packages'))
 
-@app_views.route('/delete_contribution/<contribution_id>', methods=['POST'], strict_slashes=False)
+
+@app_views.route('/delete_contribution/<contribution_id>',
+                 methods=['POST'], strict_slashes=False)
 def delete_contribution(contribution_id):
     """Deletes a contribution package"""
     contribution = storage.get(Contribution, contribution_id)

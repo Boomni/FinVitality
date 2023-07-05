@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """ View for the loans page"""
 from app.api.v1 import app_views
-from flask import Flask, render_template, request, send_from_directory, abort, jsonify
+from flask import Flask, render_template
 from app.api.v1.models.loans import Loan
 from app.api.v1.models import storage
-
 
 
 @app_views.route('/loans', methods=['GET'], strict_slashes=False)

@@ -2,17 +2,16 @@
 """ View for the landing page"""
 from app.api.v1 import app_views
 from flask import jsonify, render_template
-from flask import Flask, render_template, request, session, current_app
-from flask_mail import Mail, Message
-
-
-mail = Mail(current_app)
+from flask import Flask, render_template, request, session
+from flask_mail import Message
+from app.api.v1.app import app, mail
 
 
 @app_views.route('/', methods=['GET'], strict_slashes=False)
 def homepage():
-     """ FinVitality homepage """
-     return render_template("index.html")
+    """ FinVitality homepage """
+    return render_template("index.html")
+
 
 @app_views.route('/', methods=['POST'], strict_slashes=False)
 def contact_form():
@@ -20,14 +19,8 @@ def contact_form():
     email = request.form['email']
     subject = request.form['subject']
     message = request.form['message']
-    
-    msg = Message(
-                'Hello',
-                sender = email,
-                recipients = ['rejoiceoye1@gmail.com']
-               )
-    
-    msg.body = 'Hello Flask message sent from Flask-Mail'
+    msg = Message(subject, sender=email, recipients=['rejoiceoye1@gmail.com'])
+    msg.body = message
 
     try:
         mail.send(msg)

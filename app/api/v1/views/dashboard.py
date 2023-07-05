@@ -14,7 +14,8 @@ def dashboard():
     session_data = storage.get_session()
 
     if session_data:
-        user = session_data.query(User).filter(User.email == user_email).first()
+        user = session_data.query(User).filter(User.email
+                                               == user_email).first()
 
         if user:
             profile_data = {
@@ -30,4 +31,7 @@ def dashboard():
                 'profile_picture': user.profile_picture
             }
 
-            return render_template("dashboard.html", profile_data=profile_data, filename=user.profile_picture)
+            return render_template("dashboard.html",
+                                   profile_data=profile_data,
+                                   filename=user.profile_picture
+                                   )

@@ -3,7 +3,9 @@
 import os
 from flask import Flask, send_from_directory
 from app.api.v1 import app_views
-from app.api.v1.config import SECRET_KEY, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
+from app.api.v1.config import SECRET_KEY, MAIL_SERVER
+from app.api.v1.config import MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
+from flask_mail import Mail
 
 
 app = Flask(__name__)
@@ -17,6 +19,9 @@ app.config['MAIL_PORT'] = MAIL_PORT
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = MAIL_USERNAME
 app.config['MAIL_PASSWORD'] = MAIL_PASSWORD
+
+
+mail = Mail(app)
 
 
 if __name__ == "__main__":

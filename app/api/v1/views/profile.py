@@ -3,7 +3,8 @@
 
 import os
 from werkzeug.utils import secure_filename
-from flask import render_template, request, session, redirect, flash, url_for, render_template, current_app
+from flask import render_template, request, session, redirect
+from flask import flash, url_for, render_template, current_app
 from app.api.v1.models.users import User
 from app.api.v1.models import storage
 from app.api.v1 import app_views
@@ -17,7 +18,8 @@ def profile():
     session_data = storage.get_session()
 
     if session_data:
-        user = session_data.query(User).filter(User.email == user_email).first()
+        user = session_data.query(User).filter(User.email
+                                               == user_email).first()
 
         if user:
             profile_data = {
@@ -32,13 +34,16 @@ def profile():
                 'employment_status': user.employment_status,
                 'profile_picture': user.profile_picture
             }
-            return render_template('profile.html', profile_data=profile_data, filename=user.profile_picture)
-
+            return render_template('profile.html',
+                                   profile_data=profile_data,
+                                   filename=user.profile_picture
+                                   )
 
 
 @app_views.route('/user/profile/update', methods=['GET'], strict_slashes=False)
 def display_profile_update_form():
     return render_template("profile_update.html")
+
 
 @app_views.route('/user/profile/update', methods=['PUT'], strict_slashes=False)
 def update_profile():
@@ -69,6 +74,7 @@ def update_profile():
 
     return redirect("/user/profile")
 
+
 @app_views.route('/user/upload-photo', methods=['POST'], strict_slashes=False)
 def upload_profile_photo():
     UPLOAD_FOLDER = 'app/api/v1/static/images/users/'
@@ -77,7 +83,8 @@ def upload_profile_photo():
         session_data = storage.get_session()
 
         if session_data:
-            user = session_data.query(User).filter(User.email == user_email).first()
+            user = session_data.query(User).filter(User.email
+                                                   == user_email).first()
 
             if user:
                 if 'photo' not in request.files:
@@ -99,24 +106,31 @@ def upload_profile_photo():
 
                 delete_existing_profile_photo(user.id)
 
-                photo.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+                photo.save(os.path.join(current_app.config['UPLOAD_FOLDER'],
+                                        filename))
 
                 user.profile_picture = filename
                 session_data.commit()
 
                 flash('Profile photo updated successfully', 'success')
-                return redirect(url_for('app_views.profile', filename=filename))
+                return redirect(url_for('app_views.profile',
+                                        filename=filename))
     return redirect('/login')
+
 
 def allowed_file(filename):
     """ Check if the file has an allowed extension """
-    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    ALLOWED_EXT = {'png', 'jpg', 'jpeg'}
+    return (
+        '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXT
+    )
+
 
 def generate_unique_filename(user_id, filename):
     """ Generate a unique filename by appending the user ID """
     basename, extension = os.path.splitext(filename)
     return f"{user_id}{extension}"
+
 
 def delete_existing_profile_photo(user_id):
     if 'email' in session and 'logged_in' in session and session['logged_in']:
@@ -124,12 +138,14 @@ def delete_existing_profile_photo(user_id):
         session_data = storage.get_session()
 
         if session_data:
-            user = session_data.query(User).filter(User.email == user_email).first()
+            user = session_data.query(User).filter(User.email
+                                                   == user_email).first()
 
             if user:
                 existing_photo = user.profile_picture
 
     if existing_photo:
-        filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], existing_photo)
+        filepath = os.path.join(current_app.config['UPLOAD_FOLDER'],
+                                existing_photo)
         if os.path.exists(filepath):
             os.remove(filepath)

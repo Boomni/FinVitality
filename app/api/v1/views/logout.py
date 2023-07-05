@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module for user authentication and logout"""
 
-from flask import session, render_template, redirect
+from flask import session, redirect
 from app.api.v1 import app_views
 
 
