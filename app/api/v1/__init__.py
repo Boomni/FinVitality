@@ -10,3 +10,5 @@ from app.api.v1.views.login import *
 from app.api.v1.views.logout import *
 from app.api.v1.views.dashboard import *
 from app.api.v1.views.profile import *
+from app.api.v1.views.contributions import *
+from app.api.v1.views.loans import *

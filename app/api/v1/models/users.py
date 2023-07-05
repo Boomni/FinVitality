@@ -18,3 +18,5 @@ class User(BaseModel, Base):
     address = Column(Text)
     phonenumber = Column(String(15), nullable=False)
     employment_status = Column(String(60))
+    profile_picture = Column(String(60))
+

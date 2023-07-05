@@ -13,12 +13,7 @@ venv/
 env/
 *.env
 app/api/v1/config.py
-
-# Node.js files
-node_modules/
-
-# Build files
-build/
+app/*.config.py
 
 # Logs
 *.log

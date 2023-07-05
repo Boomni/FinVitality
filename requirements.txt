@@ -1,2 +1,5 @@
 flask
 python-dotenv
+sqlalchemy
+mysqlclient
+Flask_mail

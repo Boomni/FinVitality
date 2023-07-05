@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}User Profile{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="../static/styles/dashboard.css">
+    <link rel="stylesheet" href="../static/styles/profile.css">
+    <link rel="stylesheet" href="../static/styles/contributions.css">
+{% endblock %}
+{% block menu %}
+<ul class="menu">
+    <li>
+        <a href="/user/dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li>
+        <a href="/user/profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </li>
+    <li class="active">
+        <a href="/contributions">
+            <i class="fas fa-piggy-bank"></i>
+            <span>Contributions</span>
+        </a>
+    </li>
+    <li>
+        <a href="/loans">
+            <i class="fas fa-hand-holding-usd"></i>
+            <span>Loans</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fas fa-phone-alt"></i>
+            <span>Contact Us</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+        </a>
+    </li>
+    <li class="logout">
+        <a href="/user/logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+    </li>
+</ul>
+{% endblock %} 
+{% block content %}
+    <div class="contributions">
+        <h2>Contribution Packages Avaliable</h2>
+        <div class="contribution-container">
+    {% for contribution in contributions %}
+    <div class="contribution-card">
+      <h3 class="package-title">{{ contribution.package }}</h3>
+      <p class="description">{{ contribution.description }}</p>
+      <div class="details">
+        <p class="amount">Amount: {{ contribution.amount }}</p>
+        <p class="duration">Duration: {{ contribution.duration }}</p>
+      </div>
+      <div class="dates">
+        <p class="start-date">Start Date: {{ contribution.start_date }}</p>
+        <p class="end-date">End Date: {{ contribution.end_date }}</p>
+      </div>
+      {% if contribution.benefits %}
+        <ul class="benefits">
+          {% for benefit in contribution.benefits.split(',') %}
+            <li>{{ benefit.strip() }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No benefits available for this contribution.</p>
+      {% endif %}
+      <a href="#" class="subscribe-btn">Subscribe</a>
+    </div>
+  {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+

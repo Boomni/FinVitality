@@ -30,16 +30,30 @@ body {
   transition: 0.5s;
 }
 
-.logo {
-  height: 5rem;
-  padding: 1rem;
+.logo{
+  display: flex;
+  margin-top: 2rem;
+  font-family: "Impact", "Arial Black", sans-serif;
+  font-weight: 900;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+}
+
+.logo a{
+  font-family: "Impact", "Arial Black", sans-serif;
+  font-weight: 900;
+  font-size: larger;
+  color: white;
+  text-decoration: none;
 }
 
 .menu {
-  height: 88%;
+  height: 80%;
   position: relative;
   list-style: none;
   padding: 0;
+  margin-top: 4rem;
 }
 
 .menu li {
@@ -64,6 +78,13 @@ body {
 
 .menu a span {
   overflow: hidden;
+}
+
+.sidebar .logo p {
+  overflow: hidden;
+  font-family: "Impact", "Arial Black", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .menu a i {
@@ -96,20 +117,23 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #fff;
+  background: #083e9e;
   border-radius: 0.625rem;
   padding: 0.625rem 2rem;
   margin-bottom: 1rem;
 }
 
 .header--title {
-  color: #083e9e;
+  color: white;
 }
 
 .user--info {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+.user--info h4 {
+  color: white;
 }
 
 .search--box {
@@ -137,9 +161,7 @@ body {
   transform: scale(1.2);
 }
 
-/* Add these styles to your existing dashboard.css file */
 
-/* Dashboard Overview */
 .dashboard--overview {
   padding: 20px;
 }
@@ -201,16 +223,85 @@ body {
   background-color: #f2f2f2;
   border-radius: 5px;
   text-decoration: none;
-  color: #333;
+  color: #083e9e;
   transition: background-color 0.3s ease;
+  border: 0.1rem solid #083e9e;
 }
 
 .quick--links .link:hover {
-  background-color: #ddd;
+  background-color: rgb(200 229 215);
 }
 
 .quick--links .link i {
   font-size: 24px;
   margin-bottom: 5px;
   display: block;
+}
+
+
+@media screen and (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 999;
+  }
+}
+
+
+body {
+  display: flex;
+}
+
+
+.menu {
+  height: 80%;
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin-top: 4rem;
+}
+
+.menu li {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.menu li.active {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.menu li:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu a i {
+  margin-right: 0.5rem;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.main--content {
+  flex: 1;
+  padding: 2rem;
+  background: rgb(200 229 215 / 0.5);
 }

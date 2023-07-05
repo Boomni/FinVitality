@@ -1,75 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="../static/styles/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <div class="sidebar">
-        <div class="logo"></div>
-        <ul class="menu">
-            <li class="active">
-                <a href="#">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="/profile">
-                    <i class="fas fa-user"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-piggy-bank"></i>
-                    <span>Contributions</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <span>Loans</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>Contact Us</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a href="/logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="../static/styles/dashboard.css">
+{% endblock %}
+{% block menu %}
+<ul class="menu">
+    <li class="active">
+        <a href="/user/dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li>
+        <a href="/user/profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </li>
+    <li>
+        <a href="/contributions">
+            <i class="fas fa-piggy-bank"></i>
+            <span>Contributions</span>
+        </a>
+    </li>
+    <li>
+        <a href="/loans">
+            <i class="fas fa-hand-holding-usd"></i>
+            <span>Loans</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fas fa-phone-alt"></i>
+            <span>Contact Us</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+        </a>
+    </li>
+    <li class="logout">
+        <a href="/logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+    </li>
+</ul>
+{% endblock %}
+{% block content %}
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">
-                <span>Primary</span>
-                <h2>Dashboard</h2>
+                <span></span>
+                <h2>Welcome, {{ profile_data.firstname }}!</h2>
             </div>
             <div class="user--info">
                 <div class="search--box">
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search">
                 </div>
-                <img src="../static/images/register-bg.jpg" alt="">
+                {% if filename %}
+                    <img src="{{ url_for('static', filename='images/users/' ~ filename) }}" alt="Profile Image">
+                {% endif %}
                 <div>
-                    <h4>Jonathan Boomni</h4>
+                    <h4>{{ profile_data.lastname ~ ' ' ~ profile_data.firstname }}</h4>
                 </div>
             </div>
         </div>
@@ -137,5 +133,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

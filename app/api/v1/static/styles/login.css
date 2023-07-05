@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #ebe9e9;
+  background-color: rgb(200 229 215 / 0.5);
   overflow: auto;
 }
 
@@ -40,20 +40,24 @@ form {
 }
 
 .form-group {
+  display: flex;
   margin-bottom: 0.625rem;
+  align-items: center;
 }
 
 label {
   font-weight: 500;
+  width: 25%;
 }
 
 input {
   width: 100%;
   padding: 0.5rem;
   outline: 0;
-  background-color: rgba(182, 182, 182, 0.1);
+  background-color: rgb(200 229 215 / 0.2);
   border-radius: 0.5rem;
   border: none;
+  margin-left: 1rem;
 }
 
 button {
@@ -81,7 +85,7 @@ button:hover {
   background-color: #0056b3;
 }
 
-#message {
-  text-align: center;
-  margin-top: 0.625rem;
+.flash-messages {
+  margin: 0;
+  color: red;
 }
