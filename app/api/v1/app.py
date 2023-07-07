@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Flask Application """
 import os
-from flask import Flask, send_from_directory
+from flask import Flask
 from app.api.v1 import app_views
 from app.api.v1.config import SECRET_KEY, MAIL_SERVER
 from app.api.v1.config import MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
