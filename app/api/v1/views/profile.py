@@ -39,14 +39,35 @@ def profile():
                                    filename=user.profile_picture
                                    )
 
-
-@app_views.route('/user/profile/update', methods=['GET'], strict_slashes=False)
-def display_profile_update_form():
-    return render_template("profile_update.html")
-
-
 @app_views.route('/user/profile/update', methods=['PUT'], strict_slashes=False)
 def update_profile():
+    if not session.get('logged_in'):
+        return redirect('/login')
+
+    user_email = session['email']
+    session_data = storage.get_session()
+
+    if session_data:
+        user = session_data.query(User).filter(User.email == user_email).first()
+
+        if user:
+            user.middle_name = request.form.get('middle_name', user.middle_name)
+            user.birth_date = request.form.get('birth_date', user.birth_date)
+            user.address = request.form.get('address', user.address)
+            user.employment_status = request.form.get('employment_status', user.employment_status)
+
+            session_data.commit()
+
+            flash('Profile updated successfully', 'success')
+            return redirect('/user/profile')
+    
+    flash('Failed to update profile', 'error')
+    return redirect('/user/profile')
+
+
+
+@app_views.route('/user/upload-photo', methods=['PUT'], strict_slashes=False)
+def update_profile_photo():
     middle_name = request.form['middle_name']
     birth_date = request.form['birth_date']
     password = request.form['password']
