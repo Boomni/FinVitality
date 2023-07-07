@@ -1,0 +1,89 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(200 229 215 / 0.5);
+  overflow: auto;
+  padding: 3rem 0;
+}
+
+.container {
+  width: 40rem;
+  display: flex;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 2rem;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  margin-bottom: 0;
+  font-weight: 500;
+  flex-wrap: nowrap;
+  box-shadow: 4px 20px 20px 15px #55555552;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 2rem;
+  color: #083e9e;
+}
+
+.tagline {
+  text-align: center;
+  margin: 0;
+  font-size: 1rem;
+  margin-bottom: 1rem;;
+  font-weight: 00;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  outline: 0;
+  background-color: rgb(200 229 215 / 0.2);
+  border-radius: 0.5rem;
+  border: none;
+}
+
+button {
+  padding: 0.625rem;
+  background-color: #083e9e;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 0.5rem; 
+  width: 50%;
+  font-weight: 600;
+}
+
+.register-btn {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.login-link {
+  text-align: center;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#message {
+  text-align: center;
+  margin-top: 0.625rem;
+}

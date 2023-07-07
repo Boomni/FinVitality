@@ -1,0 +1,28 @@
+# These are files i wish to ignore
+
+# Python files
+*.pyc
+__pycache__/
+
+# Flask related files
+instance/
+.env
+
+# Virtual environment
+venv/
+env/
+*.env
+app/api/v1/config.py
+app/*.config.py
+
+# Logs
+*.log
+
+# For the app
+app/__pycache__/
+app/*.pyc
+app/*.pyo
+app/*.sql
+app/*.swp
+app/instance/
+app/.env

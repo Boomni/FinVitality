@@ -1,0 +1,72 @@
+.contributions {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.contributions h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #083e9e;
+}
+
+.contribution-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem 2.5rem;
+  }
+
+.contribution-card {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .package-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    margin-bottom: 15px;
+  }
+  
+  .amount {
+    font-weight: bold;
+  }
+  
+  .duration {
+    margin-top: 10px;
+    color: #888;
+  }
+  
+  .start-date, .end-date {
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  .benefits {
+    margin-top: 15px;
+  }
+  
+  .benefits li {
+    margin-bottom: 5px;
+  }
+  
+  .subscribe-btn {
+    display: inline-block;
+    background-color: #083e9e;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
