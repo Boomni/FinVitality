@@ -100,7 +100,7 @@ body {
 
 .main--content {
   position: relative;
-  background: #ebe9e9;
+  background: #fafbfb;
   width: 100%;
   padding: 1rem;
 }
@@ -117,23 +117,21 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #083e9e;
+  background: rgb(200 229 215);
   border-radius: 0.625rem;
   padding: 0.625rem 2rem;
   margin-bottom: 1rem;
+  box-shadow: 1px 5px 5px 2px #55555552;
 }
 
-.header--title {
-  color: white;
+.header--title, .user--info h4 {
+  color: #322EFC;
 }
 
 .user--info {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-.user--info h4 {
-  color: white;
 }
 
 .search--box {
@@ -210,7 +208,6 @@ body {
   background-color: #3498db;
 }
 
-/* Quick Links */
 .quick--links {
   display: flex;
   justify-content: space-between;
@@ -220,16 +217,16 @@ body {
   flex: 1;
   text-align: center;
   padding: 10px;
-  background-color: #f2f2f2;
+  background-color: rgb(200 229 215);
   border-radius: 5px;
   text-decoration: none;
-  color: #083e9e;
+  color: #322EFC;
   transition: background-color 0.3s ease;
-  border: 0.1rem solid #083e9e;
+  box-shadow: 1px 5px 5px 2px #55555552;
 }
 
 .quick--links .link:hover {
-  background-color: rgb(200 229 215);
+  background-color: #fafbfb;
 }
 
 .quick--links .link i {
@@ -303,5 +300,5 @@ body {
 .main--content {
   flex: 1;
   padding: 2rem;
-  background: rgb(200 229 215 / 0.5);
+  background: #fafbfb;
 }

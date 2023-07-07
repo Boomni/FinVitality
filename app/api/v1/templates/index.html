@@ -210,18 +210,21 @@ Safely handle contribution payments and loan repayments. Enjoy peace of mind wit
               <h3>Email:</h3>
               <p>rejoiceoye1@gmail.com</p>
               <br>
-              <div class="elementor-element elementor-element-9993c8e elementor-widget elementor-widget-google_maps animated fadeIn" data-id="9993c8e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:300}" data-widget_type="google_maps.default">
-                <div class="elementor-widget-container">
-                  <div class="elementor-custom-embed">
-                    <iframe loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83991.5037119628!2d7.478713267520703!3d4.803743034328058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105038c4be2a1111%3A0xe8f35dd3d3c8f7e9!2sMile%201%2C%20Port%20Harcourt%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1626818442373!5m2!1sen!2sus" title="FinVitality Location" aria-label="FinVitality Location"></iframe>
-                  </div>
-                </div>
-              </div>              
-              </div>
+            </div>
           </div>
           <div class="grid-col-item">
             <div class="featured_info">
               <form action="/" method="POST">
+                <p id="message"></p>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <ul class="flash-messages">
+                    {% for message in messages %}
+                      <p class="{{ message[1] }}">{{ message }}</p>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              {% endwith %}
                 <div class="form-group">
                   <label for="name">Name: </label>
                   <input type="name" id="name" name="name" placeholder="Enter your full name" required>
