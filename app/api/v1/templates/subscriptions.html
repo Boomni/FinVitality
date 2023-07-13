@@ -10,7 +10,7 @@
     <!-- Fonts and icons-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="../static/styles/contributions.css">
+    <link rel="stylesheet" href="../static/styles/subscriptions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../static/styles/dashboard.css">
   </head>
@@ -63,11 +63,11 @@
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/user/loans active">
+            <a href="/user/loans">
                 <i class="fas fa-hand-holding-usd"></i> Loans
             </a>
           </li>
-          <li class="sidebar-list-item">
+          <li class="sidebar-list-item active">
             <a href="/user/subscriptions">
                 <i class="fa fa-check-square" aria-hidden="true"></i> My Subscription
             </a>
@@ -84,15 +84,57 @@
           </li>
         </ul>
       </aside>
-      <!-- End Sidebar -->
 
-      <!-- Main -->
       <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">SUBSCRIPTIONS</p>
+        </div>
+  
+        <div class="subscriptions">
+          <h2>My Subscriptions</h2>
+          {% if contribution_data %}
+            <div class="subscription-table">
+              <div class="table-row header-row">
+                <div class="table-cell">Package</div>
+                <div class="table-cell">Description</div>
+                <div class="table-cell">Amount</div>
+                <div class="table-cell">Duration</div>
+                <div class="table-cell">Start Date</div>
+                <div class="table-cell">End Date</div>
+                <div class="table-cell">Benefits</div>
+                <div class="table-cell">Action</div>
+              </div>
+              {% for contribution in contribution_data %}
+                <div class="table-row">
+                  <div class="table-cell">{{ contribution.title }}</div>
+                  <div class="table-cell">{{ contribution.description }}</div>
+                  <div class="table-cell">{{ contribution.amount }}</div>
+                  <div class="table-cell">{{ contribution.duration }}</div>
+                  <div class="table-cell">{{ contribution.start_date }}</div>
+                  <div class="table-cell">{{ contribution.end_date }}</div>
+                  <div class="table-cell">
+                    {% if contribution.benefits %}
+                      <ul class="benefits-list">
+                        {% for benefit in contribution.benefits.split(',') %}
+                          <li>{{ benefit.strip() }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="no-benefits">No benefits available</p>
+                    {% endif %}
+                  </div>
+                  <div class="table-cell">
+                    <button class="make-payment-button">Make Payment</button>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p>You don't have any subscriptions.</p>
+          {% endif %}
       </main>
-      <!-- End Main -->
 
     </div>
-    <!-- Custom JS -->
-    <script src="../static/js/dashboard.js"></script>
+    <script src="../static/js/dashboard.js"></script> 
   </body>
 </html>
