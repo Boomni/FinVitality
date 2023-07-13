@@ -1,15 +1,4 @@
-.menu li:hover, .active {
-    background: #e0e0e058;
-}
-.profile{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex: 1;
-    padding: 2rem;
-    background: #fafbfb;
-}
+
 .profile h3 {
     font-size: 1.5rem;
     color: #083e9e;
@@ -18,42 +7,34 @@
     display: flex;
 }
 
-.head {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 2rem;
-    flex-direction: column;
-    align-items: center;
-}
 .info {
     display: flex;
     margin-top: 1rem;
 }
-input, .info p {
+.info input, .info p {
     width: 100%;
     min-width: 0px;
     outline: transparent solid 2px;
     outline-offset: 2px;
     position: relative;
     appearance: none;
-    height: 3rem;
     border-width: 1px;
     border-style: solid;
-    border-image: initial;
     padding: 0.75rem 1rem;
 }
 input#photo {
+    background-color: rgb(200 229 215 /0.5);
+    border-radius: 0.9375rem;
     display: flex;
-    justify-content: flex-end;
-    width: 12rem;
+    padding: 0.5rem 0.5rem;
 }
 .column-1, .column-2, .column-3 {
-    width: 60%;
+    width: 100%;
 }
 .column-pics {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .column-pics input {
     display: flex;
@@ -72,7 +53,7 @@ button {
     cursor: pointer;
     color: white;
     border-radius: 0.5rem; 
-    width: 10%;
+    width: 15%;
     font-weight: 600;
   }
   
@@ -83,18 +64,13 @@ button {
     margin: 1rem;
 }
 .upload {
-    display: flex;
-    width: 20%;
-    justify-content: flex-start;
+    width: 80%;
     margin: 1rem;
 }
 .upload-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.upload button {
-    width: 60%;
 }
 .buttons {
     display: flex;
@@ -107,8 +83,56 @@ form {
     width: 100%;
 }
 .column-pics div {
-    margin-top: 2rem; width: 10rem; height: 10rem; border-radius: 50%;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 .column-pics img {
     width: 10rem; height: 10rem; border-radius: 50%;
 }
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+
+/* Medium <= 992px */
+@media screen and (max-width: 992px) {
+    button {
+        padding: 0.625rem;
+        background-color: #083e9e;
+        border: none;
+        cursor: pointer;
+        color: white;
+        border-radius: 0.5rem;
+        width: 50%;
+        font-weight: 600;
+    }
+  }
+  
+  /* Small <= 768px */
+  @media screen and (max-width: 768px) {
+    button {
+        padding: 0.625rem;
+        background-color: #083e9e;
+        border: none;
+        cursor: pointer;
+        color: white;
+        border-radius: 0.5rem;
+        width: 50%;
+        font-weight: 600;
+    }
+  }
+  
+  /* Extra Small <= 576px */
+  @media screen and (max-width: 576px) {
+    button {
+        padding: 0.625rem;
+        background-color: #083e9e;
+        border: none;
+        cursor: pointer;
+        color: white;
+        border-radius: 0.5rem;
+        width: 50%;
+        font-weight: 600;
+    }
+  }

@@ -1,73 +1,106 @@
-{% extends "base.html" %}
-{% block title %}Dashboard{% endblock %}
-{% block links %}
-<link rel="stylesheet" href="../static/styles/dashboard.css">
-{% endblock %}
-{% block menu %}
-<ul class="menu">
-    <li class="active">
-        <a href="/user/dashboard">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
-    <li>
-        <a href="/user/profile">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
-        </a>
-    </li>
-    <li>
-        <a href="/contributions">
-            <i class="fas fa-piggy-bank"></i>
-            <span>Contributions</span>
-        </a>
-    </li>
-    <li>
-        <a href="/loans">
-            <i class="fas fa-hand-holding-usd"></i>
-            <span>Loans</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fas fa-phone-alt"></i>
-            <span>Contact Us</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fas fa-cog"></i>
-            <span>Settings</span>
-        </a>
-    </li>
-    <li class="logout">
-        <a href="/logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-        </a>
-    </li>
-</ul>
-{% endblock %}
-{% block content %}
-    <div class="main--content">
-        <div class="header--wrapper">
-            <div class="header--title">
-                <span></span>
-                <h2>Welcome, {{ profile_data.firstname }}!</h2>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+    
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Fonts and icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../static/styles/dashboard.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+            <h2>Welcome, {{ profile_data.firstname}}</h2>
+        </div>
+        <div class="header-right">
             <div class="user--info">
                 <div class="search--box">
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search">
                 </div>
-                {% if filename %}
-                    <img src="{{ url_for('static', filename='images/users/' ~ filename) }}" alt="Profile Image">
-                {% endif %}
                 <div>
                     <h4>{{ profile_data.lastname ~ ' ' ~ profile_data.firstname }}</h4>
                 </div>
             </div>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">FinVitality</div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item active">
+            <a href="/user/dashboard">
+                <i class="fas fa-tachometer-alt"></i>  Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/profile">
+                <i class="fas fa-user"></i> Profile
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/contributions">
+                <i class="fas fa-piggy-bank"></i> Contributions
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/loans">
+                <i class="fas fa-hand-holding-usd"></i> Loans
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/subscriptions">
+                <i class="fa fa-check-square" aria-hidden="true"></i> My Subscription
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/history">
+                <i class="fa fa-history" aria-hidden="true"></i> Transaction History
+            </a>
+          </li>
+          <li class="sidebar-list-item" id="logout">
+            <a href="/logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">DASHBOARD</p>
+        </div>
+
+        <div class="main-cards">
+          <div class="card">
+            <span><i class="fas fa-piggy-bank"></i></span>
+            <div class="card-inner"> 
+                <p class="text-primary">Total Savings</p>
+                <span class="text-primary font-weight-bold">₦0.00</span>
+            </div>
+          </div>
+
         </div>
 
         <div class="dashboard--overview">
@@ -114,23 +147,12 @@
                     </div>
                 </div>
             </div>
-            <div class="section">
-                <h3>Quick Links</h3>
-                <div class="quick--links">
-                    <a href="#" class="link">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        <span>Apply for a Loan</span>
-                    </a>
-                    <a href="#" class="link">
-                        <i class="fas fa-piggy-bank"></i>
-                        <span>Make a Contribution</span>
-                    </a>
-                    <a href="#" class="link">
-                        <i class="fas fa-receipt"></i>
-                        <span>View Transaction History</span>
-                    </a>
-                </div>
-            </div>
         </div>
+      </main>
+      <!-- End Main -->
+
     </div>
-{% endblock %}
+    <!-- Custom JS -->
+    <script src="../static/js/dashboard.js"></script>
+  </body>
+</html>

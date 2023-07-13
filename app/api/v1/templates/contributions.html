@@ -1,86 +1,135 @@
-{% extends "base.html" %}
-{% block title %}User Profile{% endblock %}
-{% block links %}
-    <link rel="stylesheet" href="../static/styles/dashboard.css">
-    <link rel="stylesheet" href="../static/styles/profile.css">
+<!DOCTYPE html>
+<html lang="en">
+    
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Savings</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="../static/styles/contributions.css">
-{% endblock %}
-{% block menu %}
-<ul class="menu">
-    <li>
-        <a href="/user/dashboard">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
-    <li>
-        <a href="/user/profile">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
-        </a>
-    </li>
-    <li class="active">
-        <a href="/contributions">
-            <i class="fas fa-piggy-bank"></i>
-            <span>Contributions</span>
-        </a>
-    </li>
-    <li>
-        <a href="/loans">
-            <i class="fas fa-hand-holding-usd"></i>
-            <span>Loans</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fas fa-phone-alt"></i>
-            <span>Contact Us</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fas fa-cog"></i>
-            <span>Settings</span>
-        </a>
-    </li>
-    <li class="logout">
-        <a href="/user/logout">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-        </a>
-    </li>
-</ul>
-{% endblock %} 
-{% block content %}
-    <div class="contributions">
-        <h2>Contribution Packages Avaliable</h2>
-        <div class="contribution-container">
-    {% for contribution in contributions %}
-    <div class="contribution-card">
-      <h3 class="package-title">{{ contribution.package }}</h3>
-      <p class="description">{{ contribution.description }}</p>
-      <div class="details">
-        <p class="amount">Amount: {{ contribution.amount }}</p>
-        <p class="duration">Duration: {{ contribution.duration }}</p>
-      </div>
-      <div class="dates">
-        <p class="start-date">Start Date: {{ contribution.start_date }}</p>
-        <p class="end-date">End Date: {{ contribution.end_date }}</p>
-      </div>
-      {% if contribution.benefits %}
-        <ul class="benefits">
-          {% for benefit in contribution.benefits.split(',') %}
-            <li>{{ benefit.strip() }}</li>
-          {% endfor %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/styles/dashboard.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+            <h2>Welcome, {{ profile_data.firstname}}</h2>
+        </div>
+        <div class="header-right">
+            <div class="user--info">
+                <div class="search--box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <div>
+                    <h4>{{ profile_data.lastname ~ ' ' ~ profile_data.firstname }}</h4>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">FinVitality</div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="/user/dashboard">
+                <i class="fas fa-tachometer-alt"></i>  Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/profile">
+                <i class="fas fa-user"></i> Profile
+            </a>
+          </li>
+          <li class="sidebar-list-item active">
+            <a href="/user/contributions">
+                <i class="fas fa-piggy-bank"></i> Contributions
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/loans">
+                <i class="fas fa-hand-holding-usd"></i> Loans
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/subscriptions">
+                <i class="fa fa-check-square" aria-hidden="true"></i> My Subscription
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="/user/history">
+                <i class="fa fa-history" aria-hidden="true"></i> Transaction History
+            </a>
+          </li>
+          <li class="sidebar-list-item" id="logout">
+            <a href="/logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </li>
         </ul>
-      {% else %}
-        <p>No benefits available for this contribution.</p>
-      {% endif %}
-      <a href="#" class="subscribe-btn">Subscribe</a>
-    </div>
-  {% endfor %}
-    </div>
-</div>
+      </aside>
 
-{% endblock %}
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">SAVINGS</p>
+        </div>
+  
+        <div class="contributions">
+          <h2>Contribution Packages Available</h2>
+          <table class="contribution-table">
+            <thead>
+              <tr>
+                <th>Package Title</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Duration</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Benefits</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for contribution in contributions %}
+              <tr>
+                <td>{{ contribution.title }}</td>
+                <td>{{ contribution.description }}</td>
+                <td>₦{{ contribution.amount }}</td>
+                <td>{{ contribution.duration }}</td>
+                <td>{{ contribution.start_date }}</td>
+                <td>{{ contribution.end_date }}</td>
+                <td>
+                  {% if contribution.benefits %}
+                  <ul class="benefits-list">
+                    {% for benefit in contribution.benefits.split(',') %}
+                    <li>{{ benefit.strip() }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% else %}
+                  No benefits available for this contribution.
+                  {% endif %}
+                </td>
+                <td><a href="/subscribe/{{contribution.id}}" class="subscribe-btn">Subscribe</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </main>
 
+    </div>
+    <script src="../static/js/dashboard.js"></script>
+  </body>
+</html>

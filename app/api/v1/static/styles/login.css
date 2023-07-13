@@ -89,3 +89,12 @@ button:hover {
   margin: 0;
   color: red;
 }
+
+a {
+  text-decoration: none;
+  margin: 0.5rem 0;
+}
+
+.forgot-pwd {
+  text-align: end;
+}

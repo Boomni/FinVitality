@@ -38,8 +38,8 @@ def profile():
                                    profile_data=profile_data,
                                    filename=user.profile_picture
                                    )
-
-@app_views.route('/user/profile/update', methods=['PUT'], strict_slashes=False)
+    
+@app_views.route('/user/profile/update', methods=['POST', 'PUT'], strict_slashes=False)
 def update_profile():
     if not session.get('logged_in'):
         return redirect('/login')
@@ -51,18 +51,20 @@ def update_profile():
         user = session_data.query(User).filter(User.email == user_email).first()
 
         if user:
-            user.middle_name = request.form.get('middle_name', user.middle_name)
-            user.birth_date = request.form.get('birth_date', user.birth_date)
-            user.address = request.form.get('address', user.address)
-            user.employment_status = request.form.get('employment_status', user.employment_status)
+            if request.method == 'POST' or request.form.get('_method') == 'PUT':
+                user.middle_name = request.form.get('middle_name', user.middle_name)
+                user.birth_date = request.form.get('birth_date', user.birth_date)
+                user.address = request.form.get('address', user.address)
+                user.employment_status = request.form.get('employment_status', user.employment_status)
 
-            session_data.commit()
+                session_data.commit()
 
-            flash('Profile updated successfully', 'success')
-            return redirect('/user/profile')
-    
+                flash('Profile updated successfully', 'success')
+                return redirect('/user/profile')
+
     flash('Failed to update profile', 'error')
     return redirect('/user/profile')
+
 
 
 

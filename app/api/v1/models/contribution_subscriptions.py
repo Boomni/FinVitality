@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 
 class ContributionSubscription(BaseModel, Base):
     __tablename__ = 'contribution_subscriptions'
+
     id = Column(String(60), primary_key=True)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     contribution_id = Column(
