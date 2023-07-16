@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Savings</title>
+    <title>Loan Application</title>
 
     <!-- Fonts and icons-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../static/styles/contributions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../static/styles/dashboard.css">
+    <link rel="stylesheet" href="../static/styles/loan.css">
   </head>
   <body>
     <div class="grid-container">
@@ -88,6 +89,91 @@
 
       <!-- Main -->
       <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">LOAN APPLICATION</p>
+        </div>
+        <div class="contributions">
+          <p>Easily request for FinVitality loan financing by filling the loan application form below.</p>
+          <form action="/submit_loan_application" method="post">
+            <section class="personal-details">
+            <!-- Personal Information Details -->
+            <h2>Personal Information Details</h2>
+            <div class="name">
+              <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+              <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+            </div>
+        
+            <div class="gen-mar-dob">
+              <select id="gender" name="gender" required>
+                <option value="" disabled selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+
+              <select id="marital_status" name="marital_status" required>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+              </select>
+
+              <input type="date" id="date_of_birth" name="date_of_birth" placeholder="Date of birth" required>
+            </div>
+        
+            <div class="em-pho">
+              <input type="email" id="email" name="email" placeholder="Email Address" required>
+              <input type="tel" id="mobile_number" name="mobile_number" placeholder="Mobile Number" required>
+            </div>
+        
+            <div class="income">
+              <input type="number" id="num_dependents" name="num_dependents" min="0" placeholder="No of Dependents" required>
+              <input type="number" id="annual_income" name="annual_income" min="0" placeholder="Annual Income" required>
+            </div>
+        
+            <div class="bank">
+              <input type="text" id="bank_name" name="bank_name" placeholder="Account Name" required>
+            </div>
+        
+            <div>
+              <input type="text" id="bvn" name="bvn" placeholder="Bank Verification Number (BVN)" required>
+              <input type="text" id="account_number" name="account_number" placeholder="Account Number" required>
+            </div>
+          </section>
+        
+            <!-- Employment Details -->
+          <section class="employment-details">
+            <h2>Employment Details</h2>
+            <div class="employment">
+              <input type="text" id="occupation" name="occupation" placeholder="Occupation/Business" required>
+              <textarea id="office_address" name="office_address" placeholder="Office Address" required></textarea>
+            </div>
+          </section>
+        
+            <!-- Loan/Credit Services -->
+          <section class="loan-details">
+            <h2>Loan/Credit Services</h2>
+            <div class="loan-info">
+              <select id="loan_credit_facility" name="loan_credit_facility" aria-placeholder="Loan type" required>
+                <option value="personal_loan">Personal Loan</option>
+                <option value="business_loan">Business Loan</option>
+                <option value="student_loan">Student Loan</option>
+              </select>
+              <input type="number" id="loan_amount" name="loan_amount" min="1000" max="1000000" placeholder="Loan Amount" required>
+              <input type="number" id="payment_tenure" name="payment_tenure" min="6" max="60" placeholder="Payment Tenure(months)" required>
+            </div>
+        
+            <div class="loan_purpose">
+              <textarea id="loan_purpose" name="loan_purpose" placeholder="Loan Purpose" required></textarea>
+            </div>
+          </section>        
+            <div>
+                <input type="checkbox" id="agreement" name="agreement" required>
+                I agree to the Privacy Policy
+            </div>
+            <div class="btn">
+            <button type="submit">Submit Application</button>
+          </div>
+          </form>
       </main>
       <!-- End Main -->
 

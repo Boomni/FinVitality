@@ -138,10 +138,6 @@ def update_contribution(contribution_id):
 def delete_contribution(contribution_id):
     """Deletes a contribution package"""
     contribution = storage.get(Contribution, contribution_id)
-    if contribution:
-        storage.delete(contribution)
-        storage.save()
-        return redirect("/contributions")
-    else:
-        flash('Contribution package not found', 'error')
-        return redirect(url_for('contribution_packages'))
+    storage.delete(contribution)
+    storage.save()
+    return redirect("/contributions")
