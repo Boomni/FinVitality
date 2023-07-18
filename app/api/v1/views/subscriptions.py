@@ -4,6 +4,7 @@
 from flask import jsonify, render_template, request, session, redirect, flash
 from app.api.v1.models.contribution_subscriptions import ContributionSubscription
 from app.api.v1.models.users import User
+from app.api.v1.models.loan_applications import LoanApplication
 from app.api.v1.models import storage
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.api.v1 import app_views
@@ -40,4 +41,23 @@ def display_subscriptions():
                     'benefits': subscription.contribution.benefits
                 })
 
-        return render_template('subscriptions.html', profile_data=profile_data, contribution_data=contribution_data)
+            # Fetch loan applications
+            loans = session_data.query(LoanApplication).filter(
+                LoanApplication.user_id == user.id
+            ).all()
+            loan_data = []
+            for loan in loans:
+                loan_data.append({
+                    'loan_id': loan.custom_id,
+                    'firstname': loan.firstname,
+                    'lastname': loan.lastname,
+                    'loan_amount': loan.loan_amount,
+                    'loan_purpose': loan.loan_purpose,
+                    'status': loan.status
+                })
+
+            return render_template('subscriptions.html',
+                                   profile_data=profile_data,
+                                   contribution_data=contribution_data,
+                                   loan_data=loan_data
+                                   )

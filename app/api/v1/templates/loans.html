@@ -94,7 +94,7 @@
         </div>
         <div class="contributions">
           <p>Easily request for FinVitality loan financing by filling the loan application form below.</p>
-          <form action="/submit_loan_application" method="post">
+          <form action="/user/loans/apply" method="post">
             <section class="personal-details">
             <!-- Personal Information Details -->
             <h2>Personal Information Details</h2>
@@ -131,12 +131,15 @@
             </div>
         
             <div class="bank">
-              <input type="text" id="bank_name" name="bank_name" placeholder="Account Name" required>
+              <input type="text" id="bank_name" name="bank_name" placeholder="Bank Name" required>
+            </div>
+            <div>
+              <input type="text" id="account_name" name="account_name" placeholder="Account Name" required>
+              <input type="text" id="account_number" name="account_number" placeholder="Account Number" required>
             </div>
         
             <div>
               <input type="text" id="bvn" name="bvn" placeholder="Bank Verification Number (BVN)" required>
-              <input type="text" id="account_number" name="account_number" placeholder="Account Number" required>
             </div>
           </section>
         
@@ -168,7 +171,7 @@
           </section>        
             <div>
                 <input type="checkbox" id="agreement" name="agreement" required>
-                I agree to the Privacy Policy
+                I agree to the <a href="#">Privacy Policy</a>
             </div>
             <div class="btn">
             <button type="submit">Submit Application</button>

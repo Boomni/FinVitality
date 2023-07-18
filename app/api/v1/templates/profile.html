@@ -109,7 +109,7 @@
                     {% if filename %}
                         <img src="{{ url_for('static', filename='images/users/' ~ filename) }}" alt="Profile Image">
                     {% else %}
-                        <p>Upload a profile picture</p>
+                        <img src="../static/images/avatar.png">
                     {% endif %}
                 </div>
             <div class="upload-wrap">
@@ -174,11 +174,9 @@
 </form>
         </div>
       </main>
-      <!-- End Main -->
 
     </div>
-    <!-- Custom JS -->
-    <script src="../static/js/flash-timeout.js"></script>
-    <script src="../static/js/dashboard.js"></script>
+      <script src="../static/js/flash-timeout.js"></script>
+      <script src="../static/js/dashboard.js"></script>
   </body>
 </html>

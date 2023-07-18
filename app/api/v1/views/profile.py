@@ -57,7 +57,7 @@ def update_profile():
                 user.address = request.form.get('address', user.address)
                 user.employment_status = request.form.get('employment_status', user.employment_status)
 
-                session_data.commit()
+                storage.save()
 
                 flash('Profile updated successfully', 'success')
                 return redirect('/user/profile')
@@ -79,14 +79,9 @@ def update_profile_photo():
 
     session_data = storage.get_session()
 
-    if confirm_pwd != password:
-        flash('Passwords don\'t match', 'error')
-        return redirect(url_for('app_views.display_profile_update_form'))
-
     user = User(
         middle_name=middle_name,
         birth_date=birth_date,
-        password=generate_password_hash(password),
         address=address,
         employment_status=employment_status,
         profile_picture=profile_picture

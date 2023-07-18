@@ -92,6 +92,7 @@
   
         <div class="subscriptions">
           <h2>My Subscriptions</h2>
+          <h3>Savings</h3>
           {% if contribution_data %}
             <div class="subscription-table">
               <div class="table-row header-row">
@@ -124,14 +125,43 @@
                     {% endif %}
                   </div>
                   <div class="table-cell">
-                    <button class="make-payment-button">Make Payment</button>
+                    <button class="make-payment-button"><a href="https://flutterwave.com/pay/christmas-food-pack">Make Payment</a></button>
                   </div>
                 </div>
               {% endfor %}
             </div>
           {% else %}
-            <p>You don't have any subscriptions.</p>
+            <p style="margin-left:2rem;">You have not subscribed to any contribution package.</p>
           {% endif %}
+
+          <h3>Loans</h3>
+          {% if loan_data %}
+          <div class="loan-table">
+            <div class="table-row header-row">
+              <div class="table-cell">Loan ID</div>
+              <div class="table-cell">Applicant Name</div>
+              <div class="table-cell">Loan Amount</div>
+              <div class="table-cell">Loan Purpose</div>
+              <div class="table-cell">Status</div>
+              <div class="table-cell">Action</div>
+            </div>
+            {% for loan in loan_data %}
+            <div class="table-row">
+              <div class="table-cell">{{ loan.loan_id }}</div>
+              <div class="table-cell">{{ loan.firstname }} {{ loan.lastname }}</div>
+              <div class="table-cell">{{ loan.loan_amount }}</div>
+              <div class="table-cell">{{ loan.loan_purpose }}</div>
+              <div class="table-cell">{{ loan.status }}</div>
+              <div class="table-cell">
+                <button class="update-status-button">Update Status</button>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p style="margin-left:2rem;">You have not applied for a loan.</p>
+          {% endif %}
+
       </main>
 
     </div>
