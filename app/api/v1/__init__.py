@@ -13,5 +13,5 @@ from .views.profile import *
 from .views.contributions import *
 from .views.loans import *
 from .views.savings_subscriptions import *
-from .views.loans_subscriptions import *
+from .views.loan_application import *
 from .views.history import *

@@ -73,8 +73,8 @@
                 <i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions
             </a>
             <ul class="popover">
-              <li><a href="/user/subscriptions/savings">Savings</a></li>
-              <li><a href="/user/subscriptions/loans active">Loans</a></li>
+              <li><a href="/user/savings_subscription">Savings</a></li>
+              <li><a href="/user/loan_subscription">Loans</a></li>
             </ul>
         </li>
           <li class="sidebar-list-item">
@@ -107,7 +107,6 @@
                 <div class="table-cell">Loan Amount</div>
                 <div class="table-cell">Loan Purpose</div>
                 <div class="table-cell">Status</div>
-                <div class="table-cell">Action</div>
               </div>
               {% for loan in loan_data %}
               <div class="table-row">
@@ -116,9 +115,6 @@
                 <div class="table-cell">{{ loan.loan_amount }}</div>
                 <div class="table-cell">{{ loan.loan_purpose }}</div>
                 <div class="table-cell">{{ loan.status }}</div>
-                <div class="table-cell">
-                  <button class="update-status-button">Update Status</button>
-                </div>
                 {% endfor %}
               </div>
               {% else %}

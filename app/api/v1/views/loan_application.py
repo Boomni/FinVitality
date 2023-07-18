@@ -8,7 +8,7 @@ from app.api.v1.models import storage
 from app.api.v1 import app_views
 
 
-@app_views.route('/user/subscriptions/loans', methods=['GET'], strict_slashes=False)
+@app_views.route('/user/loan_subscription', methods=['GET'], strict_slashes=False)
 def display_loan_subscriptions():
     if not session.get('logged_in'):
         return redirect('/login')

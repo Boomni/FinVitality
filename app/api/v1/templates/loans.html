@@ -75,8 +75,8 @@
                 <i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions
             </a>
             <ul class="popover">
-              <li><a href="/user/subscriptions/savings">Savings</a></li>
-              <li><a href="/user/subscriptions/loans">Loans</a></li>
+              <li><a href="/user/savings_subscription">Savings</a></li>
+              <li><a href="/user/loan_subscription">Loans</a></li>
             </ul>
         </li>
           <li class="sidebar-list-item">
@@ -117,13 +117,17 @@
               </select>
 
               <select id="marital_status" name="marital_status" required>
+                <option value="" disabled selected>Marital Status</option>
                 <option value="single">Single</option>
                 <option value="married">Married</option>
                 <option value="divorced">Divorced</option>
                 <option value="widowed">Widowed</option>
               </select>
-
-              <input type="date" id="date_of_birth" name="date_of_birth" placeholder="Date of birth" required>
+              <div>
+              <label for="date_of_birth">DOB: </label>
+              <input type="date" id="date_of_birth" name="date_of_birth" required>
+  
+            </div>
             </div>
         
             <div class="em-pho">
@@ -162,7 +166,8 @@
           <section class="loan-details">
             <h2>Loan/Credit Services</h2>
             <div class="loan-info">
-              <select id="loan_credit_facility" name="loan_credit_facility" aria-placeholder="Loan type" required>
+              <select id="loan_credit_facility" name="loan_credit_facility" required>
+                <option value="" disabled selected>Loan type</option>
                 <option value="personal_loan">Personal Loan</option>
                 <option value="business_loan">Business Loan</option>
                 <option value="student_loan">Student Loan</option>
