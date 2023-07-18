@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Savings</title>
+    <title>My Loans</title>
 
     <!-- Fonts and icons-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -68,17 +68,15 @@
                 <i class="fas fa-hand-holding-usd"></i> Loans
             </a>
           </li>
-          <li class="sidebar-list-item active">
-            <div class="my-subscriptions">
-              <a href="#" onclick="toggleSubscriptionsDropdown(event)">
+          <li class="sidebar-list-item hov active">
+            <a href="#">
                 <i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions
-              </a>
-              <div class="dropdown-content" id="subscription-dropdown">
-                <a href="/user/subscriptions" onclick="showSavings(event)">Savings</a>
-                <a href="/user/subscriptions" onclick="showLoans(event)">Loans</a>
-              </div>
-            </div>
-          </li>
+            </a>
+            <ul class="popover">
+              <li><a href="/user/subscriptions/savings">Savings</a></li>
+              <li><a href="/user/subscriptions/loans active">Loans</a></li>
+            </ul>
+        </li>
           <li class="sidebar-list-item">
             <a href="/user/transactions">
                 <i class="fa fa-history" aria-hidden="true"></i> Transaction History
@@ -94,55 +92,12 @@
 
       <main class="main-container">
         <div class="main-title">
-          <p class="font-weight-bold">SUBSCRIPTIONS</p>
+          <p class="font-weight-bold"> SUBSCRIPTIONS</p>
         </div>
+
   
         <div class="subscriptions">
-          <div id="savings-section"  style="display: none;">
-            <h3>Savings</h3>
-            {% if contribution_data %}
-            <div class="subscription-table">
-              <div class="table-row header-row">
-                <div class="table-cell">Package</div>
-                <div class="table-cell">Description</div>
-                <div class="table-cell">Amount</div>
-                <div class="table-cell">Duration</div>
-                <div class="table-cell">Start Date</div>
-                <div class="table-cell">End Date</div>
-                <div class="table-cell">Benefits</div>
-                <div class="table-cell">Action</div>
-              </div>
-              {% for contribution in contribution_data %}
-                <div class="table-row">
-                  <div class="table-cell">{{ contribution.title }}</div>
-                  <div class="table-cell">{{ contribution.description }}</div>
-                  <div class="table-cell">{{ contribution.amount }}</div>
-                  <div class="table-cell">{{ contribution.duration }}</div>
-                  <div class="table-cell">{{ contribution.start_date }}</div>
-                  <div class="table-cell">{{ contribution.end_date }}</div>
-                  <div class="table-cell">
-                    {% if contribution.benefits %}
-                      <ul class="benefits-list">
-                        {% for benefit in contribution.benefits.split(',') %}
-                          <li>{{ benefit.strip() }}</li>
-                        {% endfor %}
-                      </ul>
-                    {% else %}
-                      <p class="no-benefits">No benefits available</p>
-                    {% endif %}
-                  </div>
-                  <div class="table-cell">
-                    <button class="make-payment-button"><a href="https://flutterwave.com/pay/christmas-food-pack">Make Payment</a></button>
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
-          {% else %}
-            <p style="margin-left:2rem;">You have not subscribed to any contribution package.</p>
-          {% endif %}
-          </div>
-      
-          <div id="loans-section" style="display: none;">
+          <div id="loans-section">
             <h3>Loans</h3>
             {% if loan_data %}
             <div class="loan-table">
@@ -170,7 +125,6 @@
               <p style="margin-left:2rem;">You have not subscribed to any contribution package.</p>
               {% endif %}
             </div>
-          </div>
       </main>
     </div> 
   <script src="../static/js/dashboard.js"></script>

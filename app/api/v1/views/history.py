@@ -2,7 +2,7 @@
 """ View for the transaction history page"""
 from app.api.v1 import app_views
 from flask import render_template, request
-from flask import flash, session, redirect, url_for
+from flask import session, redirect
 from app.api.v1.models.transactions import Transaction
 from app.api.v1.models import storage
 from app.api.v1.models.users import User

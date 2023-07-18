@@ -1,18 +1,15 @@
 #!/usr/bin/python3
 """ Module for user authentication and login """
 
-from flask import jsonify, render_template, request, session, redirect, flash
+from flask import render_template, request, session, redirect
 from app.api.v1.models.contribution_subscriptions import ContributionSubscription
 from app.api.v1.models.users import User
-from app.api.v1.models.loan_applications import LoanApplication
 from app.api.v1.models import storage
-from werkzeug.security import check_password_hash, generate_password_hash
 from app.api.v1 import app_views
-from app.api.v1.models.contributions import Contribution
 
 
-@app_views.route('/user/subscriptions', methods=['GET'], strict_slashes=False)
-def display_subscriptions():
+@app_views.route('/user/subscriptions/savings', methods=['GET'], strict_slashes=False)
+def display_savings_subscriptions():
     if not session.get('logged_in'):
         return redirect('/login')
     user_email = session['email']
@@ -41,23 +38,7 @@ def display_subscriptions():
                     'benefits': subscription.contribution.benefits
                 })
 
-            # Fetch loan applications
-            loans = session_data.query(LoanApplication).filter(
-                LoanApplication.user_id == user.id
-            ).all()
-            loan_data = []
-            for loan in loans:
-                loan_data.append({
-                    'loan_id': loan.custom_id,
-                    'firstname': loan.firstname,
-                    'lastname': loan.lastname,
-                    'loan_amount': loan.loan_amount,
-                    'loan_purpose': loan.loan_purpose,
-                    'status': loan.status
-                })
-
-            return render_template('subscriptions.html',
+            return render_template('savings_subscriptions.html',
                                    profile_data=profile_data,
                                    contribution_data=contribution_data,
-                                   loan_data=loan_data
                                    )

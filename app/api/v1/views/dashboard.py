@@ -3,7 +3,7 @@
 from app.api.v1.models.users import User
 from app.api.v1.models import storage
 from app.api.v1 import app_views
-from flask import jsonify, render_template, session, redirect
+from flask import render_template, session, redirect
 
 
 @app_views.route('/user/dashboard', strict_slashes=False)

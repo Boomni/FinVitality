@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """ View for the contributions package page"""
+
 from app.api.v1 import app_views
-from flask import Flask, render_template, request
+from flask import render_template, request
 from flask import flash, session, redirect, url_for
 from app.api.v1.models.contributions import Contribution
 from app.api.v1.models.contribution_subscriptions import ContributionSubscription

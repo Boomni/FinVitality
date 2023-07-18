@@ -4,7 +4,7 @@
 from werkzeug.security import generate_password_hash
 from app.api.v1.models.users import User
 from app.api.v1.models import storage
-from flask import jsonify, render_template, request
+from flask import render_template, request
 from flask import flash, redirect, url_for, session
 from app.api.v1 import app_views
 import re

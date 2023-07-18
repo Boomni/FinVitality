@@ -5,14 +5,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>My Savings</title>
 
     <!-- Fonts and icons-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../static/styles/subscriptions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../static/styles/dashboard.css">
+    <link rel="stylesheet" href="../static/styles/subscriptions.css">
   </head>
   <body>
     <div class="grid-container">
@@ -47,7 +48,7 @@
         </div>
 
         <ul class="sidebar-list">
-          <li class="sidebar-list-item active">
+          <li class="sidebar-list-item">
             <a href="/user/dashboard">
                 <i class="fas fa-tachometer-alt"></i>  Dashboard
             </a>
@@ -67,12 +68,12 @@
                 <i class="fas fa-hand-holding-usd"></i> Loans
             </a>
           </li>
-          <li class="sidebar-list-item hov">
+          <li class="sidebar-list-item hov active">
             <a href="#">
                 <i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions
             </a>
             <ul class="popover">
-              <li><a href="/user/subscriptions/savings">Savings</a></li>
+              <li><a href="/user/subscriptions/savings active">Savings</a></li>
               <li><a href="/user/subscriptions/loans">Loans</a></li>
             </ul>
         </li>
@@ -88,75 +89,58 @@
           </li>
         </ul>
       </aside>
-      <!-- End Sidebar -->
 
-      <!-- Main -->
       <main class="main-container">
         <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
+          <p class="font-weight-bold">SUBSCRIPTIONS</p>
         </div>
 
-        <div class="main-cards">
-          <div class="card">
-            <span><i class="fas fa-piggy-bank"></i></span>
-            <div class="card-inner"> 
-                <p class="text-primary">Total Savings</p>
-                <span class="text-primary font-weight-bold">₦0.00</span>
+        <div class="subscriptions">
+          <div id="savings-section">
+            <h3>Savings</h3>
+            {% if contribution_data %}
+            <div class="subscription-table">
+              <div class="table-row header-row">
+                <div class="table-cell">Package</div>
+                <div class="table-cell">Description</div>
+                <div class="table-cell">Amount</div>
+                <div class="table-cell">Duration</div>
+                <div class="table-cell">Start Date</div>
+                <div class="table-cell">End Date</div>
+                <div class="table-cell">Benefits</div>
+                <div class="table-cell">Action</div>
+              </div>
+              {% for contribution in contribution_data %}
+                <div class="table-row">
+                  <div class="table-cell">{{ contribution.title }}</div>
+                  <div class="table-cell">{{ contribution.description }}</div>
+                  <div class="table-cell">{{ contribution.amount }}</div>
+                  <div class="table-cell">{{ contribution.duration }}</div>
+                  <div class="table-cell">{{ contribution.start_date }}</div>
+                  <div class="table-cell">{{ contribution.end_date }}</div>
+                  <div class="table-cell">
+                    {% if contribution.benefits %}
+                      <ul class="benefits-list">
+                        {% for benefit in contribution.benefits.split(',') %}
+                          <li>{{ benefit.strip() }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="no-benefits">No benefits available</p>
+                    {% endif %}
+                  </div>
+                  <div class="table-cell">
+                    <button class="make-payment-button"><a href="https://flutterwave.com/pay/christmas-food-pack">Make Payment</a></button>
+                  </div>
+                </div>
+              {% endfor %}
             </div>
+          {% else %}
+            <p style="margin-left:2rem;">You have not subscribed to any contribution package.</p>
+          {% endif %}
           </div>
-
-        </div>
-
-        <div class="dashboard--overview">
-            <div class="section">
-                <h3>Account Status</h3>
-                <div class="overview--details">
-                    <div class="detail">
-                        <h4>Loan Details:</h4>
-                        <p>Loan Amount: ₦10,000</p>
-                        <p>Remaining Balance: ₦5,000</p>
-                        <p>Next Payment Date: June 15, 2023</p>
-                        <p>Loan Status: Pending</p>
-                    </div>
-                    <div class="detail">
-                        <h4>Total Loan Repayment:</h4>
-                        <p>Total Amount: ₦3,500</p>
-                        <div class="progress--bar">
-                            <div class="progress--fill" style="width: 50%;"></div>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <h4>Upcoming Payments:</h4>
-                        <p>Loan Payment: ₦500 - June 15, 2023</p>
-                    </div>
-                </div>
-                <div class="overview--details">
-                    <div class="detail">
-                        <h4>Contribution Details:</h4>
-                        <p>Total Contributions: ₦10,000</p>
-                        <p>Contribution Package: ₦5,000</p>
-                        <p>Contribution Amount: ₦50/month</p>
-                        <p>Duration: 6months</p>
-                    </div>
-                    <div class="detail">
-                        <h4>Total Contributions:</h4>
-                        <p>Total Amount: ₦2,500</p>
-                        <div class="progress--bar">
-                            <div class="progress--fill" style="width: 50%;"></div>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <h4>Upcoming Payments:</h4>
-                        <p>Contribution Payment: ₦100 - June 20, 2023</p>
-                    </div>
-                </div>
-            </div>
-        </div>
       </main>
-      <!-- End Main -->
-
-    </div>
-    <!-- Custom JS -->
-    <script src="../static/js/dashboard.js"></script>
+    </div> 
+  <script src="../static/js/dashboard.js"></script>
   </body>
 </html>

@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ Module for user authentication and login """
 
-from flask import jsonify, render_template, request, session, redirect, flash
+from flask import render_template, request, session, redirect, flash
 from app.api.v1.models.users import User
 from app.api.v1.models import storage
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import check_password_hash
 from app.api.v1 import app_views
 
 

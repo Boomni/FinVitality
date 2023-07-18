@@ -61,43 +61,30 @@
       padding: 10px;
     }
   }
-  
-  /* ... (previous CSS code) ... */
 
-/* Updated styles for the sidebar dropdown */
-
-.my-subscriptions {
+.hov:hover .popover {
+  display: flex;
   position: relative;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  width: auto;
 }
 
-.my-subscriptions .dropdown-content {
+.hov ul {
+  list-style: none;
+  width: 100%;
+}
+
+ul.popover {
   display: none;
-  position: absolute;
-  background-color: #fff;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  top: 100%;
-  left: 0;
-  border: 1px solid #ddd;
+  width: 100%;
   border-radius: 4px;
-  padding: 4px 0;
+  list-style-type: none;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
-.my-subscriptions:hover .dropdown-content {
-  display: block;
+.popover li {
+  margin-top: 0.5rem;
 }
-
-.dropdown-content a {
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-  transition: background-color 0.2s ease;
-}
-
-.dropdown-content a:hover {
-  background-color: #f9f9f9;
-}
-
-/* ... (rest of the CSS code) ... */

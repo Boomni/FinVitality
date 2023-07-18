@@ -68,17 +68,15 @@
                 <i class="fas fa-hand-holding-usd"></i> Loans
             </a>
           </li>
-          <li class="sidebar-list-item">
-            <div class="my-subscriptions">
-              <a href="#" onclick="toggleSubscriptionsDropdown(event)">
+          <li class="sidebar-list-item hov">
+            <a href="#">
                 <i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions
-              </a>
-              <div class="dropdown-content" id="subscription-dropdown">
-                <a href="/user/subscriptions" onclick="showSavings(event)">Savings</a>
-                <a href="/user/subscriptions" onclick="showLoans(event)">Loans</a>
-              </div>
-            </div>
-          </li>
+            </a>
+            <ul class="popover">
+              <li><a href="/user/subscriptions/savings">Savings</a></li>
+              <li><a href="/user/subscriptions/loans">Loans</a></li>
+            </ul>
+        </li>
           <li class="sidebar-list-item active">
             <a href="/user/transactions">
                 <i class="fa fa-history" aria-hidden="true"></i> Transaction History

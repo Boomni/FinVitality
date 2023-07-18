@@ -2,7 +2,7 @@
 """ View for the landing page"""
 from app.api.v1 import app_views
 from flask import flash, render_template, redirect
-from flask import Flask, request, session
+from flask import request
 from flask_mail import Message
 
 
