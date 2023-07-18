@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="../static/styles/subscriptions.css">
     <link rel="stylesheet" href="../static/styles/dashboard.css">
   </head>
   <body>
@@ -68,12 +68,16 @@
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/user/subscriptions">
-                <i class="fa fa-check-square" aria-hidden="true"></i> My Subscription
-            </a>
+            <div class="my-subscriptions">
+              <a href="#"><i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions</a>
+              <div class="dropdown-content" id="subscription-dropdown">
+                <a href="/user/subscriptions" onclick="showSavings()">Savings</a>
+                <a href="/user/subscriptions" onclick="showLoans()">Loans</a>
+              </div>
+            </div>
           </li>
           <li class="sidebar-list-item">
-            <a href="/user/history">
+            <a href="/user/transactions">
                 <i class="fa fa-history" aria-hidden="true"></i> Transaction History
             </a>
           </li>

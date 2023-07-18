@@ -125,7 +125,7 @@ body {
   cursor: pointer;
 }
 
-.sidebar-list-item > a {
+.sidebar-list-item > a, .my-subscriptions >a {
   text-decoration: none;
   color: #fff;
 }

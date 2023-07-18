@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Savings</title>
 
+    <!-- Fonts and icons-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="../static/styles/contributions.css">
+    <link rel="stylesheet" href="../static/styles/subscriptions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../static/styles/dashboard.css">
     <link rel="stylesheet" href="../static/styles/subscriptions.css">
@@ -17,6 +18,7 @@
   <body>
     <div class="grid-container">
 
+      <!-- Header -->
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
@@ -36,7 +38,9 @@
             </div>
         </div>
       </header>
+      <!-- End Header -->
 
+      <!-- Sidebar -->
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">FinVitality</div>
@@ -54,7 +58,7 @@
                 <i class="fas fa-user"></i> Profile
             </a>
           </li>
-          <li class="sidebar-list-item active">
+          <li class="sidebar-list-item">
             <a href="/user/contributions">
                 <i class="fas fa-piggy-bank"></i> Contributions
             </a>
@@ -66,14 +70,16 @@
           </li>
           <li class="sidebar-list-item">
             <div class="my-subscriptions">
-              <a href="#"><i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions</a>
+              <a href="#" onclick="toggleSubscriptionsDropdown(event)">
+                <i class="fa fa-check-square" aria-hidden="true"></i> My Subscriptions
+              </a>
               <div class="dropdown-content" id="subscription-dropdown">
-                <a href="/user/subscriptions" onclick="showSavings()">Savings</a>
-                <a href="/user/subscriptions" onclick="showLoans()">Loans</a>
+                <a href="/user/subscriptions" onclick="showSavings(event)">Savings</a>
+                <a href="/user/subscriptions" onclick="showLoans(event)">Loans</a>
               </div>
             </div>
           </li>
-          <li class="sidebar-list-item">
+          <li class="sidebar-list-item active">
             <a href="/user/transactions">
                 <i class="fa fa-history" aria-hidden="true"></i> Transaction History
             </a>
@@ -88,53 +94,33 @@
 
       <main class="main-container">
         <div class="main-title">
-          <p class="font-weight-bold">SAVINGS</p>
+          <p class="font-weight-bold">TRANSACTION HISTORY</p>
         </div>
-  
-        <div class="contributions">
-          <h2>Contribution Packages Available</h2>
-          <table class="contribution-table">
-            <thead>
-              <tr>
-                <th>Package Title</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Duration</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Benefits</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for contribution in contributions %}
-              <tr>
-                <td>{{ contribution.title }}</td>
-                <td>{{ contribution.description }}</td>
-                <td>₦{{ contribution.amount }}</td>
-                <td>{{ contribution.duration }}</td>
-                <td>{{ contribution.start_date }}</td>
-                <td>{{ contribution.end_date }}</td>
-                <td>
-                  {% if contribution.benefits %}
-                  <ul class="benefits-list">
-                    {% for benefit in contribution.benefits.split(',') %}
-                    <li>{{ benefit.strip() }}</li>
-                    {% endfor %}
-                  </ul>
-                  {% else %}
-                  No benefits available for this contribution.
-                  {% endif %}
-                </td>
-                <td><a href="/subscribe/{{contribution.id}}" class="subscribe-btn">Subscribe</a></td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+        {% if transaction_data %}
+        <div class="transaction-table">
+          <div class="table-row header-row">
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell">/div>
+          </div>
+          {% for transaction in transaction_data %}
+          <div class="table-row">
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p style="margin-left:2rem;">You have not performed any transaction.</p>
+          {% endif %}
       </main>
-
-    </div>
-    <script src="../static/js/dashboard.js"></script>
+    </div> 
+  <script src="../static/js/dashboard.js"></script>
   </body>
 </html>

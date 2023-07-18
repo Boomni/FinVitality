@@ -13,3 +13,4 @@ from app.api.v1.views.profile import *
 from app.api.v1.views.contributions import *
 from app.api.v1.views.loans import *
 from app.api.v1.views.subscriptions import *
+from app.api.v1.views.history import *
