@@ -1,4 +1,5 @@
-// SIDEBAR TOGGLE
+
+
 
 var sidebarOpen = false;
 var sidebar = document.getElementById("sidebar");
@@ -16,12 +17,10 @@ function closeSidebar() {
     sidebarOpen = false;
   }
 }
-// End Sidebar toggle
 
-// Savings and loans toggle
 document.addEventListener("DOMContentLoaded", function () {
   const dropdown = document.getElementById("subscription-dropdown");
-  dropdown.style.display = "nonr";
+  dropdown.style.display = "none";
 });
 
 function toggleSubscriptionsDropdown(event) {
@@ -37,7 +36,7 @@ function showSavings(event) {
   savingsSection.style.display = "block";
   loansSection.style.display = "none";
   const dropdown = document.getElementById("subscription-dropdown");
-  dropdown.style.display = "none"; // Hide the dropdown after selection
+  dropdown.style.display = "none";
 }
 
 function showLoans(event) {
@@ -47,11 +46,8 @@ function showLoans(event) {
   savingsSection.style.display = "none";
   loansSection.style.display = "block";
   const dropdown = document.getElementById("subscription-dropdown");
-  dropdown.style.display = "none"; // Hide the dropdown after selection
+  dropdown.style.display = "none";
 }
-//End Savings and loans toggle
-
-// This is the default settings for flash messages
 function hideFlashMessages() {
   const flashMessages = document.querySelectorAll('.flash-messages p');
   flashMessages.forEach(function(flashMessage) {
@@ -59,4 +55,3 @@ function hideFlashMessages() {
   });
 }
 setTimeout(hideFlashMessages, 2500);
-// End falsh settings
