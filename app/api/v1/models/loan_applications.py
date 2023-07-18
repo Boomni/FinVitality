@@ -13,7 +13,7 @@ import uuid
 class LoanApplication(BaseModel, Base):
     __tablename__ = 'loan_applications'
 
-    custom_id = Column(String(6), primary_key=True, unique=True, nullable=False, default='FL' + str(uuid.uuid4().hex)[:3])
+    custom_id = Column(String(6), primary_key=True, unique=True, nullable=False)
     user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
     interest_rate = Column(sqltypes.Numeric(5, 2))
     status = Column(String(10))
@@ -39,3 +39,12 @@ class LoanApplication(BaseModel, Base):
     loan_amount = Column(sqltypes.Numeric(12, 2))
     loan_purpose = Column(Text)
     user = relationship("User")
+
+    _last_generated_number = 0
+
+@staticmethod
+@listens_for(LoanApplication, 'before_insert')
+def generate_custom_id(mapper, connection, target):
+    if not target.custom_id:
+        LoanApplication._last_generated_number += 1
+        target.custom_id = f'FL{LoanApplication._last_generated_number:03}'
