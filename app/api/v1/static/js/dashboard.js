@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
   var sidebarOpen = false;
   var sidebar = document.getElementById("sidebar");
 
@@ -22,4 +21,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   setTimeout(hideFlashMessages, 2500);
-});

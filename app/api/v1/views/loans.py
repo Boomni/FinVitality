@@ -30,7 +30,6 @@ def loans_packages():
     return render_template('loans.html', loans=loans, profile_data=profile_data)
 
 
-# Route for handling the loan application form submission
 @app_views.route('/user/loans/apply', methods=['POST'], strict_slashes=False)
 def submit_loan_application():
     if not session.get('logged_in'):
@@ -62,9 +61,6 @@ def submit_loan_application():
     loan_purpose = request.form.get("loan_purpose")
     agreement = request.form.get("agreement")
 
-    # Perform validation and data processing here
-
-    # Example: Storing the loan application data in the database
     loan_application = LoanApplication(
         firstname=firstname,
         lastname=lastname,
