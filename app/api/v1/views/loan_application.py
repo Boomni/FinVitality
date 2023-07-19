@@ -34,6 +34,7 @@ def display_loan_subscriptions():
                     'firstname': loan.firstname,
                     'lastname': loan.lastname,
                     'loan_amount': loan.loan_amount,
+                    'loan_type': loan.loan_credit_facility,
                     'loan_purpose': loan.loan_purpose,
                     'status': loan.status
                 })

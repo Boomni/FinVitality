@@ -105,6 +105,7 @@
                 <div class="table-cell">Loan ID</div>
                 <div class="table-cell">Applicant Name</div>
                 <div class="table-cell">Loan Amount</div>
+                <div class="table-cell">Loan Type</div>
                 <div class="table-cell">Loan Purpose</div>
                 <div class="table-cell">Status</div>
               </div>
@@ -113,8 +114,9 @@
                 <div class="table-cell">{{ loan.loan_id }}</div>
                 <div class="table-cell">{{ loan.firstname }} {{ loan.lastname }}</div>
                 <div class="table-cell">{{ loan.loan_amount }}</div>
+                <div class="table-cell">{{ loan.loan_type }}</div>
                 <div class="table-cell">{{ loan.loan_purpose }}</div>
-                <div class="table-cell">{{ loan.status }}</div>
+                <div class="table-cell">{% if loan.status %}value="{{ loan.status }}"{% else %}Pending{% endif %}</div>
                 {% endfor %}
               </div>
               {% else %}
