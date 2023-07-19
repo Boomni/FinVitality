@@ -81,7 +81,7 @@ def subscribe(contribution_id):
                 })
 
             flash('Subscribed successfully', 'success')
-            return render_template('subscriptions.html', contribution_data=contribution_data, profile_data=profile_data)
+            return render_template('savings_contributions.html', contribution_data=contribution_data, profile_data=profile_data)
 
     flash('Failed to subscribe', 'error')
     return render_template("contributions.html", profile_data=profile_data)
